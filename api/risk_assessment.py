@@ -16,7 +16,7 @@ Vercel 배포 시 주의사항
 from http.server import BaseHTTPRequestHandler
 import json
 import os
-from openai import OpenAI
+
 
 # 의료 진단이 아님을 항상 고정으로 붙이는 면책 문구
 DISCLAIMER = "본 서비스는 의료 진단이 아니며 참고용입니다. 정확한 진단과 처방은 반드시 의료진과 상담하세요."
@@ -105,7 +105,7 @@ def generate_ai_advice(age, sbp, dbp, glucose, score_result: dict) -> str:
         # 키가 아예 설정 안 된 경우를 대비한 안전한 기본 문구
         return "AI 안내 문구 생성에 실패했습니다. (API 키가 설정되지 않았습니다) 잠시 후 다시 시도해주세요."
 
-    client = OpenAI(api_key=api_key)
+    
 
     risk_group = score_result["risk_group"]
 
@@ -130,23 +130,8 @@ def generate_ai_advice(age, sbp, dbp, glucose, score_result: dict) -> str:
 6. 마크다운 기호(#, *, - 등) 없이 순수 텍스트로만 작성할 것
 """.strip()
 
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "당신은 신중하고 친절한 건강관리 안내 도우미입니다. 진단은 절대 내리지 않습니다."},
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=400,
-            temperature=0.6,
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        # 실제 서비스에서는 로그를 남기고, 사용자에게는 안전한 메시지만 보여준다.
-        print(f"[AI 호출 오류] {e}")
-        return "AI 안내 문구 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
-
-
+    
+    
 class handler(BaseHTTPRequestHandler):
     def _send_json(self, status_code: int, payload: dict):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
