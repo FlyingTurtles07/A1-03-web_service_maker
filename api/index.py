@@ -4,6 +4,13 @@ from google import genai
 from .risk_assessment import assess_risk   # 같은 폴더에서 import
 
 class handler(BaseHTTPRequestHandler):
+     def do_GET(self):
+        """브라우저로 직접 접속 시 안내 메시지"""
+        self._send(200, {
+            "message": "이 API는 POST 요청만 받습니다.",
+            "usage": "age, sbp, dbp, sugar를 JSON으로 보내주세요."
+        })
+
     def do_POST(self):
         try:
             length = int(self.headers['Content-Length'])
