@@ -1,51 +1,11 @@
-// ========================================
-// 요소
-// ========================================
+# `js/main.js` — 입력 검증 및 API 오류 처리 부분
 
-const healthForm =
-    document.getElementById("health-form");
-
-const formError =
-    document.getElementById("form-error");
-
-const resultEmpty =
-    document.getElementById("result-empty");
-
-const resultContent =
-    document.getElementById("result-content");
-
-const totalScoreElement =
-    document.getElementById("total-score");
-
-const riskBadge =
-    document.getElementById("risk-badge");
-
-const resultTitle =
-    document.getElementById("result-title");
-
-const resultMessage =
-    document.getElementById("result-message");
-
-const ageScoreElement =
-    document.getElementById("age-score");
-
-const bloodPressureScoreElement =
-    document.getElementById("blood-pressure-score");
-
-const glucoseScoreElement =
-    document.getElementById("glucose-score");
-
-
-// ========================================
-// 폼 제출
-// ========================================
-
+```javascript
 healthForm.addEventListener(
     "submit",
     async function (event) {
 
         event.preventDefault();
-
 
         // --------------------------------
         // 오류 초기화
@@ -54,38 +14,32 @@ healthForm.addEventListener(
         formError.hidden = true;
         formError.textContent = "";
 
-
         // --------------------------------
-        // 입력값
-        // --------------------------------
-
-        const age =
-            Number(
-                document.getElementById("age").value
-            );
-
-        const sbp =
-            Number(
-                document.getElementById("sbp").value
-            );
-
-        const dbp =
-            Number(
-                document.getElementById("dbp").value
-            );
-
-        const glucose =
-            Number(
-                document.getElementById("glucose").value
-            );
-
-
-        // --------------------------------
-        // 프론트 검증
+        // 원본 입력값
         // --------------------------------
 
-        if (!age || !sbp || !dbp || !glucose) {
+        const ageInput =
+            document.getElementById("age").value.trim();
 
+        const sbpInput =
+            document.getElementById("sbp").value.trim();
+
+        const dbpInput =
+            document.getElementById("dbp").value.trim();
+
+        const glucoseInput =
+            document.getElementById("glucose").value.trim();
+
+        // --------------------------------
+        // 1. 필수 입력값 검증
+        // --------------------------------
+
+        if (
+            !ageInput ||
+            !sbpInput ||
+            !dbpInput ||
+            !glucoseInput
+        ) {
             showError(
                 "모든 건강정보를 입력해주세요."
             );
@@ -93,6 +47,31 @@ healthForm.addEventListener(
             return;
         }
 
+        // --------------------------------
+        // 2. 숫자 형식 검증
+        // --------------------------------
+
+        const age = Number(ageInput);
+        const sbp = Number(sbpInput);
+        const dbp = Number(dbpInput);
+        const glucose = Number(glucoseInput);
+
+        if (
+            !Number.isFinite(age) ||
+            !Number.isFinite(sbp) ||
+            !Number.isFinite(dbp) ||
+            !Number.isFinite(glucose)
+        ) {
+            showError(
+                "나이, 혈압, 혈당은 숫자로 입력해주세요."
+            );
+
+            return;
+        }
+
+        // --------------------------------
+        // 3. 나이 범위 검증
+        // --------------------------------
 
         if (age < 1 || age > 120) {
 
@@ -103,26 +82,35 @@ healthForm.addEventListener(
             return;
         }
 
+        // --------------------------------
+        // 4. 수축기 혈압 범위 검증
+        // --------------------------------
 
         if (sbp < 50 || sbp > 250) {
 
             showError(
-                "수축기 혈압(SBP)을 확인해주세요."
+                "수축기 혈압(SBP)은 50~250mmHg 범위로 입력해주세요."
             );
 
             return;
         }
 
+        // --------------------------------
+        // 5. 이완기 혈압 범위 검증
+        // --------------------------------
 
         if (dbp < 30 || dbp > 150) {
 
             showError(
-                "이완기 혈압(DBP)을 확인해주세요."
+                "이완기 혈압(DBP)은 30~150mmHg 범위로 입력해주세요."
             );
 
             return;
         }
 
+        // --------------------------------
+        // 6. 수축기/이완기 관계 검증
+        // --------------------------------
 
         if (dbp >= sbp) {
 
@@ -133,16 +121,18 @@ healthForm.addEventListener(
             return;
         }
 
+        // --------------------------------
+        // 7. 공복혈당 범위 검증
+        // --------------------------------
 
         if (glucose < 30 || glucose > 500) {
 
             showError(
-                "공복혈당 수치를 확인해주세요."
+                "공복혈당은 30~500mg/dL 범위로 입력해주세요."
             );
 
             return;
         }
-
 
         // --------------------------------
         // 로딩 상태
@@ -158,12 +148,11 @@ healthForm.addEventListener(
         submitButton.textContent =
             "AI가 분석하는 중...";
 
+        // --------------------------------
+        // API 호출
+        // --------------------------------
 
         try {
-
-            // --------------------------------
-            // Vercel API 호출
-            // --------------------------------
 
             const response =
                 await fetch(
@@ -177,25 +166,33 @@ healthForm.addEventListener(
                         },
 
                         body: JSON.stringify({
-                            age,
-                            sbp,
-                            dbp,
+                            age: age,
+                            sbp: sbp,
+                            dbp: dbp,
                             sugar: glucose
                         })
                     }
                 );
 
+            // --------------------------------
+            // JSON 응답 안전하게 처리
+            // --------------------------------
+
+            let data;
+
+            try {
+
+                data = await response.json();
+
+            } catch (jsonError) {
+
+                throw new Error(
+                    "서버에서 올바른 응답을 받지 못했습니다."
+                );
+            }
 
             // --------------------------------
-            // JSON 응답
-            // --------------------------------
-
-            const data =
-                await response.json();
-
-
-            // --------------------------------
-            // 서버 오류
+            // HTTP 오류 처리
             // --------------------------------
 
             if (!response.ok) {
@@ -206,13 +203,11 @@ healthForm.addEventListener(
                 );
             }
 
-
             // --------------------------------
-            // 결과 표시
+            // 정상 결과
             // --------------------------------
 
             showResult(data);
-
 
         } catch (error) {
 
@@ -221,11 +216,27 @@ healthForm.addEventListener(
                 error
             );
 
-            showError(
-                error.message ||
-                "서버와 연결하지 못했습니다. 잠시 후 다시 시도해주세요."
-            );
+            // --------------------------------
+            // 네트워크 오류
+            // --------------------------------
 
+            if (
+                error instanceof TypeError
+            ) {
+
+                showError(
+                    "서버와 연결할 수 없습니다. " +
+                    "인터넷 연결을 확인하고 " +
+                    "잠시 후 다시 시도해주세요."
+                );
+
+            } else {
+
+                showError(
+                    error.message ||
+                    "건강정보 분석 중 오류가 발생했습니다."
+                );
+            }
 
         } finally {
 
@@ -257,80 +268,4 @@ function showError(message) {
         block: "center"
     });
 }
-
-
-// ========================================
-// 결과 표시
-// ========================================
-
-function showResult(data) {
-
-    resultEmpty.hidden = true;
-
-    resultContent.hidden = false;
-
-
-    // --------------------------------
-    // 점수
-    // --------------------------------
-
-    totalScoreElement.textContent =
-        data.total_score;
-
-
-    ageScoreElement.textContent =
-        `${data.age_score}점`;
-
-
-    bloodPressureScoreElement.textContent =
-        `${data.bp_score}점`;
-
-
-    glucoseScoreElement.textContent =
-        `${data.glucose_score}점`;
-
-
-    // --------------------------------
-    // 위험도
-    // --------------------------------
-
-    riskBadge.textContent =
-        data.risk_level;
-
-
-    if (data.risk_level === "안정군") {
-
-        resultTitle.textContent =
-            "현재 위험도는 안정군입니다.";
-
-    } else if (data.risk_level === "주의군") {
-
-        resultTitle.textContent =
-            "건강관리에 주의가 필요합니다.";
-
-    } else {
-
-        resultTitle.textContent =
-            "의료기관 상담을 고려해주세요.";
-    }
-
-
-    // --------------------------------
-    // Gemini AI 안내
-    // --------------------------------
-
-    resultMessage.textContent =
-        data.ai_message ||
-        "AI 맞춤 안내를 생성하지 못했습니다.";
-
-
-    // --------------------------------
-    // 결과 화면 이동
-    // --------------------------------
-
-    document
-        .getElementById("result")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-}
+```
