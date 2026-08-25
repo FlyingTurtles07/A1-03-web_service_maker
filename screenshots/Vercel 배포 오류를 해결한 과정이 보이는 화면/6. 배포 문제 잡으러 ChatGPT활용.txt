@@ -1,0 +1,10 @@
+6. 배포 문제 잡으러 ChatGPT활용
+
+5.1에서 다 수정한 후 
+
+vercel 문제 잡으러 domain확인, vercel json 만든다고 하다가 먼저
+
+vercel setting General 확인 루트 디렉토리 확인, bulid and deployment 확인
+
+
+결국 Framework Settings 아래부분 Python을 ---> other로 바꾸면서 해결남 ...........

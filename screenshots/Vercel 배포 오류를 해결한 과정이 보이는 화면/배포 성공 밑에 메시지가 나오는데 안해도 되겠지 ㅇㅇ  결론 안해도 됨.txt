@@ -1,0 +1,6 @@
+코딩 에이전트 플러그인을 설치하세요
+
+코딩 에이전트를 Vercel 전문가로 만들어 보세요. 터미널에서 다음 명령어를 복사하여 실행하기만 하면 플러그인이 설치됩니다. Claude, Cursor, Codex에서 사용 가능합니다.
+
+
+npx plugins add vercel/vercel-plugin

@@ -1,0 +1,288 @@
+Gemini API 사용하기로 결정 후 5단계 Vercel Serverless Function 코드 뼈대와 API 키 환경변수 설정법
+
+앞에 travel_planner 한것을 웹 버전으로 옮기는 것뿐이니까요. 차근차근 짚어드릴게요. 🚀
+
+---
+
+## 1단계: 폴더 구조 확인
+
+Vercel은 `api/` 폴더 안의 파일을 자동으로 Serverless Function으로 인식합니다.
+
+```
+프로젝트루트/
+├── index.html
+├── css/
+├── js/
+├── api/
+│   └── analyze.py      ← 여기에 백엔드 로직 작성
+├── requirements.txt    ← 패키지 목록
+├── .env                ← 로컬용 API 키 (절대 커밋 X)
+└── .gitignore          ← .env를 여기 등록
+```
+
+---
+
+## 2단계: requirements.txt 작성
+
+`api/` 폴더가 아니라 **프로젝트 루트**에 둡니다.
+
+```txt
+google-generativeai
+```
+
+> 💡 Vercel이 배포할 때 이 파일을 읽고 자동으로 패키지를 설치해줍니다.
+
+---
+
+## 3단계: Serverless Function 뼈대 (`api/analyze.py`)
+
+Vercel의 Python 함수는 `BaseHTTPRequestHandler` 형식을 씁니다.
+
+```python
+from http.server import BaseHTTPRequestHandler
+import json
+import os
+import google.generativeai as genai
+
+class handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        try:
+            # 1. 프론트에서 보낸 데이터 읽기
+            content_length = int(self.headers['Content-Length'])
+            body = self.rfile.read(content_length)
+            data = json.loads(body)
+
+            # 2. 위험도 분류 결과 받기 (프론트에서 계산한 값)
+            risk_level = data.get('risk_level', '안정군')
+            age = data.get('age', '')
+            bp = data.get('bp', '')       # 혈압
+            sugar = data.get('sugar', '') # 혈당
+
+            # 3. 빈 입력 검증
+            if not age or not bp or not sugar:
+                self.send_error_response(400, "필수값을 입력하세요.")
+                return
+
+            # 4. Gemini API 설정 (환경변수에서 키 읽기)
+            api_key = os.environ.get('GEMINI_API_KEY')
+            genai.configure(api_key=api_key)
+            model = genai.GenerativeModel('gemini-1.5-flash')
+
+            # 5. 프롬프트 작성
+            prompt = f"""
+당신은 만성질환 건강관리 도우미입니다.
+아래 사용자의 위험도 분류 결과에 맞는 맞춤 안내 문구를 작성하세요.
+
+- 나이: {age}세
+- 혈압: {bp}
+- 혈당: {sugar}
+- 위험도 분류: {risk_level}
+
+조건:
+1. 왜 이 분류에 해당하는지 쉽게 설명
+2. 지금 무엇을 해야 하는지 구체적으로 안내
+3. 따뜻하고 이해하기 쉬운 말투
+"""
+
+            # 6. AI 호출
+            response = model.generate_content(prompt)
+            result_text = response.text
+
+            # 7. 성공 응답
+            self.send_success_response({"message": result_text})
+
+        except Exception as e:
+            self.send_error_response(500, f"오류가 발생했습니다: {str(e)}")
+
+    # --- 응답 헬퍼 함수 ---
+    def send_success_response(self, data):
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+
+    def send_error_response(self, code, message):
+        self.send_response(code)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps({"error": message}, ensure_ascii=False).encode('utf-8'))
+```
+
+> 💡 travel_planner.py와 비교하면 **"프롬프트 만들고 → model.generate_content() 호출 → 결과 받기"** 이 핵심 흐름은 완전히 똑같습니다. 다른 건 웹 요청을 읽고(`do_POST`) 응답을 돌려주는 포장 부분뿐이에요.
+
+---
+
+## 4단계: API 키 환경변수 설정 (가장 중요! ⚠️)
+
+### (A) 로컬 개발용 — `.env` 파일
+
+프로젝트 루트에 `.env` 생성:
+
+```
+GEMINI_API_KEY=발급받은_키_여기에
+```
+
+그리고 **반드시** `.gitignore`에 추가:
+
+```
+.env
+```
+
+> 🔒 이걸 안 하면 GitHub에 키가 그대로 올라갑니다. 노출되면 즉시 폐기·재발급해야 하니 처음부터 습관 들이세요!
+
+### (B) 배포용 — Vercel 대시보드
+
+로컬 `.env`는 배포 서버에 올라가지 않으므로, Vercel에 따로 등록해야 합니다.
+
+1. Vercel 프로젝트 → **Settings** 탭
+2. **Environment Variables** 메뉴 클릭
+3. 입력:
+   - **Key**: `GEMINI_API_KEY`
+   - **Value**: 발급받은 키
+4. Save → **재배포(Redeploy)**
+
+> 💡 코드의 `os.environ.get('GEMINI_API_KEY')`가 로컬에선 `.env`를, 배포 환경에선 Vercel 설정값을 자동으로 읽어옵니다. 코드는 한 번만 짜면 양쪽 다 작동해요!
+
+---
+
+## 다음 단계 미리보기
+
+이 백엔드가 준비되면, 6단계에서 프론트엔드 JS로 이렇게 호출하게 됩니다:
+
+```javascript
+const res = await fetch('/api/analyze', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ age, bp, sugar, risk_level })
+});
+const data = await res.json();
+```
+
+---
+
+여기까지 잘 따라오셨어요! 정리하면:
+1. ✅ `api/analyze.py` — Gemini 호출 로직
+2. ✅ `requirements.txt` — 패키지 목록
+3. ✅ `.env` + `.gitignore` — 키 안전 관리
+4. ✅ Vercel 환경변수 등록
+
+**궁금한 점 하나 확인할게요** — 위험도 분류(고위험/위험/안정군) 계산은 **프론트엔드 JS에서 할 계획인가요, 아니면 이 백엔드 함수에서 할 계획인가요?**
+
+답변에 따라 코드 구조를 살짝 다듬어야 해서요. 어느 쪽으로 생각하고 계신지 알려주시면 그에 맞게 이어서 도와드릴게요! 😊
+
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+1. 기존 requirements.txt 화일에 openai>=1.40.0 있엇는데 지우고 google-generativeai만 넣으면 될까?
+2. api 폴더 만들고 analyze.py 만들면 되지?
+3. 배포용 vercel 대시보드 이건 완전 초보니까 자세하게 알려줘봐
+
+
+
+
+좋은 질문이에요! 하나씩 정확하게 짚어드릴게요. 👍
+
+---
+
+## 1. requirements.txt 정리 ✅
+
+네, 맞습니다! `openai>=1.40.0`을 지우고 `google-generativeai`로 교체하면 돼요.
+
+**변경 전:**
+```txt
+openai>=1.40.0
+```
+
+**변경 후:**
+```txt
+google-generativeai>=0.8.0
+```
+
+> 💡 이번 프로젝트에선 openai를 안 쓰니까 지우는 게 맞아요. 불필요한 패키지가 남아 있으면 배포 시 설치 시간만 늘어나거든요.
+>
+> ⚠️ 혹시 requirements.txt에 openai **말고 다른 줄도** 있다면 지우지 마세요! (예: `flask` 같은 게 있으면 그건 남겨둬야 할 수도 있어요.) 지금 파일에 뭐가 있는지 전체를 붙여주시면 확인해드릴게요.
+
+---
+
+## 2. api 폴더 + analyze.py ✅
+
+네, 정확합니다!
+
+- **프로젝트 루트**에 `api` 폴더 생성
+- 그 안에 `analyze.py` 생성
+
+Vercel은 `api/` 폴더 안의 파일을 **자동으로** Serverless Function으로 인식해요. 따로 설정할 필요 없이 폴더 이름만 `api`면 됩니다.
+
+> 💡 파일 이름이 `analyze.py`니까, 나중에 프론트에서 호출할 주소는 자동으로 `/api/analyze`가 됩니다. (파일명 = URL 경로)
+
+---
+
+## 3. Vercel 대시보드 환경변수 등록 (초보자용 완전 가이드) 🐣
+
+천천히 따라오세요. 이 과정은 **GitHub에 코드를 올리고, Vercel에 프로젝트를 연결한 다음**에 하는 작업이에요.
+
+### 준비: Vercel 프로젝트가 이미 있어야 함
+아직 Vercel에 배포를 안 하셨다면, 먼저 이 순서예요:
+1. [vercel.com](https://vercel.com) 접속 → **GitHub 계정으로 로그인**
+2. 대시보드에서 **"Add New..." → "Project"** 클릭
+3. 본인의 GitHub 저장소 목록에서 이 프로젝트를 **Import**
+4. 배포가 한 번 진행됩니다 (환경변수 없이도 일단 배포는 됨)
+
+### 본론: 환경변수 등록하기
+
+**Step 1.** Vercel 대시보드에서 **내 프로젝트 이름**을 클릭해 들어갑니다.
+
+**Step 2.** 상단 메뉴에서 **`Settings`** 탭을 클릭합니다.
+```
+[Overview]  [Deployments]  [Analytics]  [Settings]  ← 이거 클릭
+```
+
+**Step 3.** 왼쪽 사이드바에서 **`Environment Variables`**를 찾아 클릭합니다.
+
+**Step 4.** 입력 칸이 나오면 이렇게 채웁니다:
+
+| 항목 | 입력 내용 |
+|---|---|
+| **Key** (또는 Name) | `GEMINI_API_KEY` |
+| **Value** | 발급받은 실제 키 (예: `AIzaSy...`) |
+
+> ⚠️ Key 이름은 코드의 `os.environ.get('GEMINI_API_KEY')`와 **글자 하나까지 똑같아야** 합니다. 오타나 대소문자 주의!
+
+**Step 5.** Environment 선택 항목이 보이면 **Production, Preview, Development 전부 체크** (기본으로 다 체크되어 있을 거예요).
+
+**Step 6.** **`Save`** 버튼 클릭!
+
+**Step 7. (중요!)** 환경변수는 **저장한다고 바로 적용되지 않아요.** 재배포를 해야 합니다.
+1. 상단 **`Deployments`** 탭으로 이동
+2. 맨 위 최신 배포 오른쪽의 **`...`** (점 세 개) 클릭
+3. **`Redeploy`** 클릭 → 확인
+
+---
+
+### ✅ 정리하면
+
+| 순서 | 할 일 |
+|---|---|
+| 1 | requirements.txt에서 openai 지우고 google-generativeai 추가 |
+| 2 | api 폴더 + analyze.py 생성 |
+| 3 | 로컬 `.env`에 키 넣고 `.gitignore`에 `.env` 등록 |
+| 4 | GitHub에 커밋 & 푸시 |
+| 5 | Vercel에 프로젝트 Import |
+| 6 | Vercel Settings → 환경변수 등록 → Save → Redeploy |
+
+---
+
+정말 잘하고 계세요! 이 부분만 넘기면 5단계의 가장 까다로운 고비는 넘긴 거예요. 💪
+
+**우선 확인 부탁드릴 게 하나 있어요** — 지금 requirements.txt에 openai 말고 **다른 줄도 있는지** 전체 내용을 붙여주시겠어요? 실수로 필요한 걸 지우면 배포가 안 될 수 있어서요. 그 다음 단계로 바로 넘어가겠습니다! 😊
+
+
+
+
+
+
+
+
