@@ -1,6 +1,63 @@
-# `js/main.js` — 입력 검증 및 API 오류 처리 부분
+// ========================================
+// 건강정보 입력 및 API 처리
+// ========================================
 
-```javascript
+// ----------------------------------------
+// DOM 요소
+// ----------------------------------------
+
+const healthForm =
+    document.getElementById("health-form");
+
+const formError =
+    document.getElementById("form-error");
+
+const resultEmpty =
+    document.getElementById("result-empty");
+
+const resultContent =
+    document.getElementById("result-content");
+
+const totalScore =
+    document.getElementById("total-score");
+
+const riskBadge =
+    document.getElementById("risk-badge");
+
+const resultTitle =
+    document.getElementById("result-title");
+
+const resultMessage =
+    document.getElementById("result-message");
+
+const ageScore =
+    document.getElementById("age-score");
+
+const bloodPressureScore =
+    document.getElementById("blood-pressure-score");
+
+const glucoseScore =
+    document.getElementById("glucose-score");
+
+
+// ----------------------------------------
+// 담당의 연결 요청 요소
+// ----------------------------------------
+
+const doctorConnectBox =
+    document.getElementById("doctor-connect-box");
+
+const doctorConnectButton =
+    document.getElementById("doctor-connect-button");
+
+const doctorConnectMessage =
+    document.getElementById("doctor-connect-message");
+
+
+// ========================================
+// 건강정보 제출
+// ========================================
+
 healthForm.addEventListener(
     "submit",
     async function (event) {
@@ -14,8 +71,9 @@ healthForm.addEventListener(
         formError.hidden = true;
         formError.textContent = "";
 
+
         // --------------------------------
-        // 원본 입력값
+        // 입력값 가져오기
         // --------------------------------
 
         const ageInput =
@@ -30,8 +88,9 @@ healthForm.addEventListener(
         const glucoseInput =
             document.getElementById("glucose").value.trim();
 
+
         // --------------------------------
-        // 1. 필수 입력값 검증
+        // 필수 입력값 검증
         // --------------------------------
 
         if (
@@ -40,6 +99,7 @@ healthForm.addEventListener(
             !dbpInput ||
             !glucoseInput
         ) {
+
             showError(
                 "모든 건강정보를 입력해주세요."
             );
@@ -47,8 +107,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 2. 숫자 형식 검증
+        // 숫자 형식 검증
         // --------------------------------
 
         const age = Number(ageInput);
@@ -62,6 +123,7 @@ healthForm.addEventListener(
             !Number.isFinite(dbp) ||
             !Number.isFinite(glucose)
         ) {
+
             showError(
                 "나이, 혈압, 혈당은 숫자로 입력해주세요."
             );
@@ -69,8 +131,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 3. 나이 범위 검증
+        // 나이 범위 검증
         // --------------------------------
 
         if (age < 1 || age > 120) {
@@ -82,8 +145,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 4. 수축기 혈압 범위 검증
+        // 수축기 혈압 범위 검증
         // --------------------------------
 
         if (sbp < 50 || sbp > 250) {
@@ -95,8 +159,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 5. 이완기 혈압 범위 검증
+        // 이완기 혈압 범위 검증
         // --------------------------------
 
         if (dbp < 30 || dbp > 150) {
@@ -108,8 +173,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 6. 수축기/이완기 관계 검증
+        // 혈압 관계 검증
         // --------------------------------
 
         if (dbp >= sbp) {
@@ -121,8 +187,9 @@ healthForm.addEventListener(
             return;
         }
 
+
         // --------------------------------
-        // 7. 공복혈당 범위 검증
+        // 공복혈당 범위 검증
         // --------------------------------
 
         if (glucose < 30 || glucose > 500) {
@@ -133,6 +200,7 @@ healthForm.addEventListener(
 
             return;
         }
+
 
         // --------------------------------
         // 로딩 상태
@@ -148,9 +216,10 @@ healthForm.addEventListener(
         submitButton.textContent =
             "AI가 분석하는 중...";
 
-        // --------------------------------
+
+        // ========================================
         // API 호출
-        // --------------------------------
+        // ========================================
 
         try {
 
@@ -174,15 +243,17 @@ healthForm.addEventListener(
                     }
                 );
 
+
             // --------------------------------
-            // JSON 응답 안전하게 처리
+            // JSON 응답 처리
             // --------------------------------
 
             let data;
 
             try {
 
-                data = await response.json();
+                data =
+                    await response.json();
 
             } catch (jsonError) {
 
@@ -190,6 +261,7 @@ healthForm.addEventListener(
                     "서버에서 올바른 응답을 받지 못했습니다."
                 );
             }
+
 
             // --------------------------------
             // HTTP 오류 처리
@@ -203,8 +275,9 @@ healthForm.addEventListener(
                 );
             }
 
+
             // --------------------------------
-            // 정상 결과
+            // 결과 표시
             // --------------------------------
 
             showResult(data);
@@ -215,6 +288,7 @@ healthForm.addEventListener(
                 "API ERROR:",
                 error
             );
+
 
             // --------------------------------
             // 네트워크 오류
@@ -254,18 +328,191 @@ healthForm.addEventListener(
 
 
 // ========================================
+// 결과 표시
+// ========================================
+
+function showResult(data) {
+
+    // --------------------------------
+    // 결과 영역 표시
+    // --------------------------------
+
+    resultEmpty.hidden = true;
+    resultContent.hidden = false;
+
+
+    // --------------------------------
+    // 점수 표시
+    // --------------------------------
+
+    totalScore.textContent =
+        data.total_score;
+
+    ageScore.textContent =
+        data.age_score + "점";
+
+    bloodPressureScore.textContent =
+        data.bp_score + "점";
+
+    glucoseScore.textContent =
+        data.glucose_score + "점";
+
+
+    // --------------------------------
+    // 위험도 표시
+    // --------------------------------
+
+    riskBadge.textContent =
+        data.risk_level;
+
+
+    // --------------------------------
+    // 위험도별 제목
+    // --------------------------------
+
+    if (data.risk_level === "고위험군") {
+
+        resultTitle.textContent =
+            "주의가 필요한 고위험 상태입니다.";
+
+    } else if (data.risk_level === "주의군") {
+
+        resultTitle.textContent =
+            "건강관리에 주의가 필요합니다.";
+
+    } else {
+
+        resultTitle.textContent =
+            "현재 비교적 안정적인 상태입니다.";
+    }
+
+
+    // --------------------------------
+    // AI 안내 메시지
+    // --------------------------------
+
+    if (data.ai_message) {
+
+        resultMessage.textContent =
+            data.ai_message;
+
+    } else {
+
+        resultMessage.textContent =
+            "현재 건강상태에 맞는 관리 안내를 확인해주세요.";
+    }
+
+
+    // --------------------------------
+    // 고위험군 담당의 연결 요청
+    // --------------------------------
+
+    showDoctorConnect(
+        data.risk_level
+    );
+
+
+    // --------------------------------
+    // 결과 화면으로 이동
+    // --------------------------------
+
+    resultContent.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
+// ========================================
+// 담당의 연결 요청 표시
+// ========================================
+
+function showDoctorConnect(riskLevel) {
+
+    // --------------------------------
+    // 고위험군이 아니면 숨김
+    // --------------------------------
+
+    if (riskLevel !== "고위험군") {
+
+        doctorConnectBox.hidden = true;
+
+        doctorConnectMessage.hidden = true;
+
+        return;
+    }
+
+
+    // --------------------------------
+    // 고위험군이면 표시
+    // --------------------------------
+
+    doctorConnectBox.hidden = false;
+
+    doctorConnectMessage.hidden = true;
+
+    doctorConnectButton.disabled = false;
+
+    doctorConnectButton.textContent =
+        "담당의 연결 요청";
+}
+
+
+// ========================================
+// 담당의 연결 요청 버튼
+// ========================================
+
+doctorConnectButton.addEventListener(
+    "click",
+    function () {
+
+        // --------------------------------
+        // 요청 중 표시
+        // --------------------------------
+
+        doctorConnectButton.disabled = true;
+
+        doctorConnectButton.textContent =
+            "연결 요청 중...";
+
+
+        // --------------------------------
+        // 연결 요청 시뮬레이션
+        // --------------------------------
+
+        setTimeout(
+            function () {
+
+                doctorConnectButton.textContent =
+                    "연결 요청 완료";
+
+                doctorConnectMessage.textContent =
+                    "담당의 연결 요청이 접수되었습니다. 담당 의료진의 확인 후 안내드릴 예정입니다.";
+
+                doctorConnectMessage.hidden =
+                    false;
+
+            },
+            1000
+        );
+    }
+);
+
+
+// ========================================
 // 오류 표시
 // ========================================
 
 function showError(message) {
 
-    formError.textContent = message;
+    formError.textContent =
+        message;
 
-    formError.hidden = false;
+    formError.hidden =
+        false;
 
     formError.scrollIntoView({
         behavior: "smooth",
         block: "center"
     });
 }
-```
