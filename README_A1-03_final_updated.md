@@ -741,9 +741,62 @@ https://github.com/FlyingTurtles07/A1-03-web_service_maker
 
 AI가 생성한 코드를 그대로 사용하는 것이 아니라 실제 실행 결과를 확인하고 오류를 수정하면서 프로젝트를 완성했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑮ — AI 코딩 도구와 주고받은 대화 중 대표적인 개발/디버깅 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
+<details>
+<summary>📸 AI 코딩 도구와 주고받은 대화 캡처 6종 (클릭)</summary>
+<br>
 
-<span style="background-color:#fff3cd">📸 캡처 ⑯ — Vercel 배포 오류를 해결한 과정이 보이는 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/1.png" width="700"><br>
+<sub>AI 코딩 도구와 API 선택 관련 논의</sub>
+<br><br>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/2.png" width="700"><br>
+<sub>개발/디버깅 대화 화면 2</sub>
+<br><br>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/3.png" width="700"><br>
+<sub>개발/디버깅 대화 화면 3</sub>
+<br><br>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/4.png" width="700"><br>
+<sub>개발/디버깅 대화 화면 4</sub>
+<br><br>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/5.png" width="700"><br>
+<sub>개발/디버깅 대화 화면 5</sub>
+<br><br>
+<img src="screenshots/AI%20%EC%BD%94%EB%94%A9%20%EB%8F%84%EA%B5%AC%EC%99%80%20%EC%A3%BC%EA%B3%A0%EB%B0%9B%EC%9D%80%20%EB%8C%80%ED%99%94%20%EC%A4%91%20%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8%20%EA%B0%9C%EB%B0%9C%EB%94%94%EB%B2%84%EA%B9%85%20%ED%99%94%EB%A9%B4/6.png" width="700"><br>
+<sub>개발/디버깅 대화 화면 6</sub>
+<br><br>
+</details>
+
+<details>
+<summary>📸 Vercel 배포 오류 해결 과정 캡처 9종 (클릭)</summary>
+<br>
+
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/vercel%20json%20%EC%97%86%EC%A7%80.png" width="700"><br>
+<sub>문제 진단 — vercel.json 파일 존재 여부 확인 (ChatGPT와 함께 디버깅)</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/Framework%20Settings.png" width="700"><br>
+<sub>Vercel Framework Preset 설정 확인</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/vercel%20setting%20General.png" width="700"><br>
+<sub>Vercel General 설정 확인</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/bulid%20and%20deployment.png" width="700"><br>
+<sub>Build & Deployment 설정 확인</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/%ED%99%98%EA%B2%BD%20%EB%B3%80%EC%88%98%20%EC%84%A4%EC%A0%95.png" width="700"><br>
+<sub>환경 변수(Gemini API 키) 설정</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/domain%ED%81%B4%EB%A6%AD%20%ED%99%94%EB%A9%B4.png" width="700"><br>
+<sub>배포 도메인 확인</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/logs.png" width="700"><br>
+<sub>배포 로그 확인</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/%EB%B0%B0%ED%8F%AC%EB%A7%8C%20%EC%84%B1%EA%B3%B5%20%EC%8A%A4%EC%83%B7.png" width="700"><br>
+<sub>수정 후 배포 성공 화면</sub>
+<br><br>
+<img src="screenshots/Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%98%A4%EB%A5%98%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%9C%20%EA%B3%BC%EC%A0%95%EC%9D%B4%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%ED%99%94%EB%A9%B4/%EB%B0%B0%ED%8F%AC%20%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EB%A7%9E%EB%82%98.png" width="700"><br>
+<sub>배포된 사이트 최종 정상 작동 확인</sub>
+<br><br>
+</details>
 
 ---
 
