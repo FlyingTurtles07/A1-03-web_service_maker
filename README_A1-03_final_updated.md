@@ -2,7 +2,14 @@
 
 > 간단한 건강정보를 입력하면 규칙 기반 위험도 점수를 계산하고, Google Gemini API를 활용해 위험도에 맞는 맞춤형 건강관리 안내를 제공하는 웹 서비스입니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ① — 서비스 전체 메인 화면 / 첫 화면 캡처를 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%84%EC%B2%B4%20%EB%A9%94%EC%9D%B8%20%ED%99%94%EB%A9%B4.png" width="700"><br>
+<sub>서비스 전체 메인 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -58,7 +65,7 @@ Gemini AI 맞춤 건강관리 안내 생성
 
 실제 담당의 배정, 처방전 발급, 약국·배송 연계, 119 등 실제 응급 연계는 구현 범위에서 제외하고 향후 확장 기능으로 정의했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ② — 서비스 기획서 또는 서비스 흐름을 보여주는 화면을 여기에 넣으세요.</span>
+<span style="background-color:#fff3cd">📸 캡처 ② — 서비스 기획서 또는 서비스 흐름을 보여주는 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
 
 ---
 
@@ -75,7 +82,14 @@ Gemini AI 맞춤 건강관리 안내 생성
 
 프론트엔드에서 기본 입력값을 확인하고, 서버에서도 다시 검증합니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ③ — 건강정보 입력 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/%EA%B1%B4%EA%B0%95%20%EC%A0%95%EB%B3%B4%20%EC%9E%85%EB%A0%A5%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>건강정보 입력 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -119,7 +133,17 @@ Gemini API 호출
 결과 화면에 표시
 ```
 
-<span style="background-color:#fff3cd">📸 캡처 ④ — Gemini AI 분석 결과가 실제 화면에 표시된 장면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/AI%EA%B0%80%20%EC%A0%95%EB%B3%B4%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EC%A4%91.png" width="700"><br>
+<sub>AI가 건강정보를 분석하는 중 (로딩 상태)</sub>
+<br><br>
+<img src="screenshots/Gemini%20AI%20%EB%B6%84%EC%84%9D%20%EA%B2%B0%EA%B3%BC%EA%B0%80%20%EC%8B%A4%EC%A0%9C%20%ED%99%94%EB%A9%B4%EC%97%90%20%ED%91%9C%EC%8B%9C%EB%90%9C%20%EC%9E%A5%EB%A9%B4.png" width="700"><br>
+<sub>Gemini AI 분석 결과가 실제 화면에 표시된 장면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -135,7 +159,14 @@ Gemini API 호출
 - Gemini AI 맞춤 건강관리 안내
 - 건강 관련 면책 문구
 
-<span style="background-color:#fff3cd">📸 캡처 ⑤ — 위험도 분석 결과 전체 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%8D%B0%EC%8A%A4%ED%81%AC%ED%83%91%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%203%20%EA%B1%B4%EA%B0%95%20%EC%9C%84%ED%97%98%EB%8F%84%20%EB%B6%84%EC%84%9D%20%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4.png" width="700"><br>
+<sub>위험도 분석 결과 전체 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -145,7 +176,17 @@ Gemini API 호출
 
 이번 미션에서는 실제 의료기관이나 담당의에게 연결하지 않고, 클릭 시 관리자에게 알림이 전송되었다는 정적 안내를 표시하는 방식으로 구현했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑥ — 고위험군 결과 및 담당의 연결 요청 버튼 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/%EA%B3%A0%EC%9C%84%ED%97%98%EA%B5%B0%EB%A7%8C%20%EB%8B%B4%EB%8B%B9%EC%9D%98%20%EC%97%B0%EA%B2%B0%20%EC%9A%94%EC%B2%AD%20%EB%B2%84%ED%8A%BC%20%EC%83%9D%EC%84%B1%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>고위험군 결과 및 담당의 연결 요청 버튼 생성</sub>
+<br><br>
+<img src="screenshots/%EA%B3%A0%EC%9C%84%ED%97%98%EA%B5%B0%EB%A7%8C%20%EB%8B%B4%EB%8B%B9%EC%9D%98%20%EC%97%B0%EA%B2%B0%20%EC%9A%94%EC%B2%AD%20%EB%B2%84%ED%8A%BC%20%EB%88%8C%EB%9F%AC%20%EC%97%B0%EA%B2%B0%20%EC%9A%94%EC%B2%AD%20%EC%99%84%EB%A3%8C%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>담당의 연결 요청 버튼 클릭 후 완료 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -160,7 +201,20 @@ Gemini API 호출
 | 분석 결과 | 위험도 점수 및 AI 안내 |
 | 추가 안내 | 고위험군 담당의 연결 요청 시뮬레이션 |
 
-<span style="background-color:#fff3cd">📸 캡처 ⑦ — 데스크톱 전체 화면 또는 주요 섹션을 보여주는 캡처를 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182558.png" width="700"><br>
+<sub>서비스 소개 (메인) 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182608.png" width="700"><br>
+<sub>건강정보 입력 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182615.png" width="700"><br>
+<sub>분석 결과 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -178,9 +232,35 @@ Gemini API 호출
 - Hero 영역의 컬럼 배치
 - 네비게이션 및 섹션 이동
 
-<span style="background-color:#fff3cd">📸 캡처 ⑧ — 데스크톱 화면 캡처를 여기에 넣으세요.</span>
+<details>
+<summary>📸 데스크톱 화면 캡처 (클릭)</summary>
+<br>
 
-<span style="background-color:#fff3cd">📸 캡처 ⑨ — 모바일 화면 캡처를 여기에 넣으세요.</span>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182558.png" width="700"><br>
+<sub>데스크톱 - 메인 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182608.png" width="700"><br>
+<sub>데스크톱 - 건강정보 입력 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182615.png" width="700"><br>
+<sub>데스크톱 - 분석 결과 화면</sub>
+<br><br>
+</details>
+
+<details>
+<summary>📸 모바일 화면 캡처 (클릭)</summary>
+<br>
+
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182650.png" width="700"><br>
+<sub>모바일 - 메인 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182715.png" width="700"><br>
+<sub>모바일 - 건강정보 입력 화면</sub>
+<br><br>
+<img src="screenshots/5.%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%ED%99%94%EB%A9%B4%20%EB%B0%8F%20%EB%B0%98%EC%9D%91%ED%98%95%20%EC%A0%81%EC%9A%A9%20%EC%9B%B9%20%EC%BA%A1%EC%B3%90/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-21%20182732.png" width="700"><br>
+<sub>모바일 - 분석 결과 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -443,7 +523,29 @@ Gemini API 호출
 
 이와 같이 **프론트엔드와 백엔드의 이중 검증 + JSON 오류 처리 + 위험도 계산 오류 처리 + Gemini API 오류 처리 + 네트워크 오류 처리**를 적용했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑩ — 입력값 누락 또는 오류 메시지가 표시된 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 입력값 검증 및 오류 메시지 캡처 6종 (클릭)</summary>
+<br>
+
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/%EB%B9%88%20%EC%9E%85%EB%A0%A5%EB%9E%80%20%EC%9E%88%EC%9D%84%20%EB%95%8C%20%EB%B6%84%EC%84%9D%20%EC%9A%94%EA%B5%AC%EC%8B%9C%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>필수 입력값 누락 시 오류</sub>
+<br><br>
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/%EC%88%AB%EC%9E%90%EA%B0%80%20%EC%95%84%EB%8B%88%EB%A9%B4%20%EC%9E%85%EB%A0%A5%EC%9D%B4%20%EC%95%88%EB%90%A8%20%EA%B7%B8%EB%9E%98%EB%8F%84%20%EC%88%AB%EC%9E%90%EB%A5%BC%20%EC%9E%85%EB%A0%A5%ED%95%B4%20%EB%8B%AC%EB%9D%BC%20%EC%9A%94%EA%B5%AC%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>숫자가 아닌 값 입력 시 오류</sub>
+<br><br>
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/%EB%A5%98%EB%82%98%EC%9D%B4%20%EB%B2%94%EC%9C%84%20%EC%98%A4%EB%A5%98%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>나이 허용 범위 초과 오류</sub>
+<br><br>
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/SBP%20%EB%B2%94%EC%9C%84%20%EC%98%A4%EB%A5%98%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>수축기 혈압(SBP) 허용 범위 초과 오류</sub>
+<br><br>
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/%ED%98%88%EB%8B%B9%20%EB%B2%94%EC%9C%84%20%EC%98%A4%EB%A5%98%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>공복혈당 허용 범위 초과 오류</sub>
+<br><br>
+<img src="screenshots/10.%20%EC%9E%85%EB%A0%A5%EA%B0%92%20%EA%B2%80%EC%A6%9D%20%EB%B0%8F%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC%20%EC%BA%A1%EC%B3%90/%ED%98%88%EC%95%95%20%EA%B4%80%EA%B3%84%20%EC%98%A4%EB%A5%98%20SBP%EA%B0%80%20DBP%EB%B3%B4%EB%8B%A4%20%EB%82%AE%EC%9C%BC%EB%A9%B4%20%EC%95%88%EB%90%A8%20%EC%9E%85%EB%A0%A5%20%EC%98%A4%EB%A5%98%20%EC%9D%B4%EC%83%81%20%EA%B0%90%EC%A7%80%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>SBP/DBP 관계 오류 (이완기가 수축기보다 높은 경우)</sub>
+<br><br>
+</details>
 
 ---
 
@@ -541,9 +643,22 @@ Production Deployment
 
 배포 과정에서 Python Framework Preset으로 인해 `/` 경로에서 API JSON이 표시되는 문제가 발생했으며, Framework Preset을 `Other`로 변경한 후 정적 `index.html` 화면과 Python API가 정상적으로 분리되어 동작하도록 수정했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑪ — Vercel Production Deployment가 Ready 상태인 화면을 여기에 넣으세요.</span>
+<span style="background-color:#fff3cd">📸 캡처 ⑪ — Vercel Production Deployment가 Ready 상태인 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
 
-<span style="background-color:#fff3cd">📸 캡처 ⑫ — Vercel 배포 사이트의 실제 서비스 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 Vercel 배포 사이트 실제 작동 화면 (데스크톱) (클릭)</summary>
+<br>
+
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%8D%B0%EC%8A%A4%ED%81%AC%ED%83%91%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%201%20%EB%8D%B0%EC%8A%A4%ED%81%AC%ED%83%91%20%EB%A9%94%EC%9D%B8%20%ED%99%94%EB%A9%B4%20.png" width="700"><br>
+<sub>배포 사이트 - 데스크톱 메인 화면</sub>
+<br><br>
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%8D%B0%EC%8A%A4%ED%81%AC%ED%83%91%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%202%20%EA%B1%B4%EA%B0%95%EC%A0%95%EB%B3%B4%EC%9E%85%EB%A0%A5%20%ED%99%94%EB%A9%B4.png" width="700"><br>
+<sub>배포 사이트 - 데스크톱 건강정보 입력 화면</sub>
+<br><br>
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%8D%B0%EC%8A%A4%ED%81%AC%ED%83%91%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%203%20%EA%B1%B4%EA%B0%95%20%EC%9C%84%ED%97%98%EB%8F%84%20%EB%B6%84%EC%84%9D%20%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4.png" width="700"><br>
+<sub>배포 사이트 - 데스크톱 위험도 분석 결과 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -557,7 +672,14 @@ https://a1-03-web-service-maker-aiq3.vercel.app
 
 https://github.com/FlyingTurtles07/A1-03-web_service_maker
 
-<span style="background-color:#fff3cd">📸 캡처 ⑬ — 배포 사이트 주소가 보이는 브라우저 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/AI%EA%B0%80%20%EC%A0%95%EB%B3%B4%EB%A5%BC%20%EB%B6%84%EC%84%9D%ED%95%98%EB%8A%94%20%EC%A4%91.png" width="700"><br>
+<sub>브라우저 주소창에 배포 URL(a1-03-web-service-maker-aiq3.vercel.app)이 표시된 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -588,7 +710,17 @@ https://github.com/FlyingTurtles07/A1-03-web_service_maker
 공복혈당: 126
 ```
 
-<span style="background-color:#fff3cd">📸 캡처 ⑭ — 실제 테스트 입력값과 분석 결과가 함께 보이는 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/%EA%B1%B4%EA%B0%95%20%EC%A0%95%EB%B3%B4%20%EC%9E%85%EB%A0%A5%20%EC%BA%A1%EC%B3%90.png" width="700"><br>
+<sub>테스트 입력값 (나이 65 / SBP 140 / DBP 90 / 공복혈당 126)</sub>
+<br><br>
+<img src="screenshots/Gemini%20AI%20%EB%B6%84%EC%84%9D%20%EA%B2%B0%EA%B3%BC%EA%B0%80%20%EC%8B%A4%EC%A0%9C%20%ED%99%94%EB%A9%B4%EC%97%90%20%ED%91%9C%EC%8B%9C%EB%90%9C%20%EC%9E%A5%EB%A9%B4.png" width="700"><br>
+<sub>위 입력값에 대한 분석 결과</sub>
+<br><br>
+</details>
 
 ---
 
@@ -609,9 +741,9 @@ https://github.com/FlyingTurtles07/A1-03-web_service_maker
 
 AI가 생성한 코드를 그대로 사용하는 것이 아니라 실제 실행 결과를 확인하고 오류를 수정하면서 프로젝트를 완성했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑮ — AI 코딩 도구와 주고받은 대화 중 대표적인 개발/디버깅 화면을 여기에 넣으세요.</span>
+<span style="background-color:#fff3cd">📸 캡처 ⑮ — AI 코딩 도구와 주고받은 대화 중 대표적인 개발/디버깅 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
 
-<span style="background-color:#fff3cd">📸 캡처 ⑯ — Vercel 배포 오류를 해결한 과정이 보이는 화면을 여기에 넣으세요.</span>
+<span style="background-color:#fff3cd">📸 캡처 ⑯ — Vercel 배포 오류를 해결한 과정이 보이는 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
 
 ---
 
@@ -637,7 +769,14 @@ Root Directory를 확인한 후 Framework Preset을 `Other`로 변경하여 정�
 
 입력값 누락, 잘못된 데이터 형식, 서버/API 오류 등을 구분하여 사용자에게 안내하도록 구성했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑰ — 개발 중 발생한 오류 또는 수정 전/후 비교 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 캡처 보기 (클릭)</summary>
+<br>
+
+<img src="screenshots/AI%20%EC%95%88%EB%82%B4%EB%AC%B8%EC%9D%84%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%20%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C%20%EC%98%A4%EB%A5%98%EA%B0%80%20%EB%B0%9C%EC%83%9D%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4.%20%EC%9E%A0%EC%8B%9C%20%ED%9B%84%20%EB%8B%A4%EC%8B%9C%20%EC%8B%9C%EB%8F%84%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94..png" width="700"><br>
+<sub>개발 중 발생했던 Gemini API 오류 메시지 화면</sub>
+<br><br>
+</details>
 
 ---
 
@@ -699,7 +838,23 @@ Root Directory를 확인한 후 Framework Preset을 `Other`로 변경하여 정�
 - [ ] AI 기능 동작 스크린샷
 - [ ] AI 코딩 도구 활용 스크린샷
 
-<span style="background-color:#fff3cd">📸 캡처 ⑱ — 최종 제출용 전체 결과 화면을 여기에 넣으세요.</span>
+<details>
+<summary>📸 최종 제출용 전체 결과 화면 - 모바일 (클릭)</summary>
+<br>
+
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%201%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EB%A9%94%EC%9D%B8%20%ED%99%94%EB%A9%B4.jpg" width="700"><br>
+<sub>배포 사이트 - 모바일 메인 화면</sub>
+<br><br>
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%202%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EA%B1%B4%EA%B0%95%EC%A0%95%EB%B3%B4%EC%9E%85%EB%A0%A5%20%ED%99%94%EB%A9%B4.jpg" width="700"><br>
+<sub>배포 사이트 - 모바일 건강정보 입력 화면</sub>
+<br><br>
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%202_1%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EA%B1%B4%EA%B0%95%EC%A0%95%EB%B3%B4%EC%9E%85%EB%A0%A5%20%ED%99%94%EB%A9%B4.jpg" width="700"><br>
+<sub>배포 사이트 - 모바일 건강정보 입력 화면 (스크롤)</sub>
+<br><br>
+<img src="screenshots/13.%20Vercel%20%EB%B0%B0%ED%8F%AC%20%EC%84%B1%EA%B3%B5%20%ED%9B%84%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%9E%91%EB%8F%99%20%20%EA%B2%B0%EA%B3%BC%20%EC%BA%A1%EC%B3%90/%EB%B0%B0%ED%8F%AC%20%ED%9B%84%20%EC%9E%91%EB%8F%99%20%EC%BA%A1%EC%B3%90%203%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EA%B1%B4%EA%B0%95%20%EC%9C%84%ED%97%98%EB%8F%84%20%EB%B6%84%EC%84%9D%20%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4.jpg" width="700"><br>
+<sub>배포 사이트 - 모바일 위험도 분석 결과 화면</sub>
+<br><br>
+</details>
 
 ---
 
