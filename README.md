@@ -704,7 +704,7 @@ https://github.com/FlyingTurtles07/A1-03-web_service_maker
 | 고위험군 연결 요청 시뮬레이션 | ✅ |
 | API 오류 처리 | ✅ |
 | 데스크톱 화면 | ✅ |
-| 모바일 화면 | ⬜ 최종 캡처 후 확인 |
+| 모바일 화면 | ✅ |
 | Vercel 배포 | ✅ |
 
 ### 테스트 입력 예시
