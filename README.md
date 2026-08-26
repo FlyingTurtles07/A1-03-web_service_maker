@@ -643,7 +643,13 @@ Production Deployment
 
 배포 과정에서 Python Framework Preset으로 인해 `/` 경로에서 API JSON이 표시되는 문제가 발생했으며, Framework Preset을 `Other`로 변경한 후 정적 `index.html` 화면과 Python API가 정상적으로 분리되어 동작하도록 수정했습니다.
 
-<span style="background-color:#fff3cd">📸 캡처 ⑪ — Vercel Production Deployment가 Ready 상태인 화면을 여기에 넣으세요. (해당하는 캡처를 screenshots 폴더에서 찾지 못해 비워두었습니다)</span>
+<details>
+<summary>📸 Vercel Production Deployment가 Ready 상태인 화면 (클릭)</summary>
+<br>
+<img src="screenshots/Vercel%20배포%20사이트의%20Production%20Deployment가%20Ready%20상태%20캡쳐.png" width="700">
+
+<br>
+</details>
 
 <details>
 <summary>📸 Vercel 배포 사이트 실제 작동 화면 (데스크톱) (클릭)</summary>
@@ -885,11 +891,11 @@ Root Directory를 확인한 후 Framework Preset을 `Other`로 변경하여 정�
 - [x] GitHub 저장소
 - [x] 배포 URL
 - [x] README
-- [ ] 서비스 기획서 최종본
-- [ ] 데스크톱 스크린샷
-- [ ] 모바일 스크린샷
-- [ ] AI 기능 동작 스크린샷
-- [ ] AI 코딩 도구 활용 스크린샷
+- [x] 서비스 기획서 최종본
+- [x] 데스크톱 스크린샷
+- [x] 모바일 스크린샷
+- [x] AI 기능 동작 스크린샷
+- [x] AI 코딩 도구 활용 스크린샷
 
 <details>
 <summary>📸 최종 제출용 전체 결과 화면 - 모바일 (클릭)</summary>
@@ -952,23 +958,6 @@ AI가 제공하는 내용은 건강관리 참고용이며 의료진의 진단이
 | Live Demo | https://a1-03-web-service-maker-aiq3.vercel.app |
 
 ---
-
-## 22. 최종 제출 전 체크
-
-- [ ] README의 모든 `📸 캡처` 위치에 실제 이미지 삽입
-- [ ] 데스크톱 캡처 삽입
-- [ ] 모바일 캡처 삽입
-- [ ] AI 결과 캡처 삽입
-- [ ] Vercel 배포 캡처 삽입
-- [ ] AI 코딩 도구 캡처 삽입
-- [ ] API 키가 캡처에 노출되지 않았는지 확인
-- [ ] `.env`가 GitHub에 올라가지 않았는지 확인
-- [ ] GitHub 최신 코드와 로컬 코드가 동일한지 확인
-- [ ] Vercel 최신 배포가 `Ready`인지 확인
-- [ ] 배포 URL 최종 접속 확인
-- [ ] README 오탈자 확인
-- [ ] 최종 Git commit / push
-
 ---
 
 ## 참고
